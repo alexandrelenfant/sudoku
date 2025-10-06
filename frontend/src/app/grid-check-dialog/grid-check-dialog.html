@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Vérification</h2>
+<mat-dialog-content>
+  @switch (_data.checkStatus) {
+    @case (0) {
+      Vous avez résolu la grille, félicitations !
+    }
+    @case (1) {
+      La grille comporte une ou plusieurs erreur(s)
+    }
+    @case (-1) {
+      Une ou plusieurs case(s) de la grille n'ont pas été remplie(s)
+    }
+  }
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton mat-dialog-close>OK</button>
+</mat-dialog-actions>

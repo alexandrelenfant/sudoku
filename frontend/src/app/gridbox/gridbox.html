@@ -1,0 +1,9 @@
+@if (undefined === value()) {
+  <mat-grid-list cols="3">
+    @for (item of [].constructor(9); track item; let i = $index) {
+      <mat-grid-tile>{{ clues()?.includes(i + 1) ? i + 1 : "" }}</mat-grid-tile>
+    }
+  </mat-grid-list>
+} @else {
+  <div class="gridbox_value">{{ value() }}</div>
+}

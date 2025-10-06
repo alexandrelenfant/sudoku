@@ -1,0 +1,73 @@
+#gridboxes {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+$gridSize: 650px;
+
+#gridboxes > mat-grid-list {
+  cursor: pointer;
+  width: $gridSize;
+  height: $gridSize;
+  padding: 0!important;
+}
+
+#progress_box {
+  flex: 1;
+  margin: 0 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gridbox_initial {
+  background-color: var(--mat-sys-secondary-container);
+}
+
+.gridbox_selected {
+  background-color: var(--mat-sys-inverse-primary);
+}
+
+.gridbox {;
+  border-top: dashed 1px black;
+  border-left: dashed 1px black;
+}
+
+.gridbox:nth-child(-n+9),
+.gridbox:nth-child(n+28):nth-child(-n+36),
+.gridbox:nth-child(n+55):nth-child(-n+63) {
+  border-top: solid 1px black;
+}
+
+.gridbox:nth-child(9n) {
+  border-right: solid 1px black;
+}
+
+.gridbox:nth-child(3n+1) {
+  border-left: solid 1px black;
+}
+
+.gridbox:nth-child(n+73):nth-child(-n+81) {
+  border-bottom: solid 1px black;
+}
+
+.gridbox app-gridbox {
+  width: 100%;
+  height: 100%;
+}
+
+mat-list {
+  padding: 0;
+}
+
+mat-list-item:not(:last-child) {
+  margin-bottom: 10px!important;
+}
+
+mat-list button {
+  box-shadow: none;
+}

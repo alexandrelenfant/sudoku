@@ -1,0 +1,40 @@
+<div id="gridboxes" (click)="onCapturedClick($event)">
+  @if (1 > (getDisplayStatus$() | async)!) {
+    <div id="progress_box">
+      <h4>@if (0 == (getDisplayStatus$() | async)!) { Chargement en cours } @else { Une erreur s'est produite }</h4>
+      @if (0 == (getDisplayStatus$() | async)!) {
+      <mat-progress-bar mode="query"></mat-progress-bar>
+      }
+    </div>
+  } @else {
+    <mat-grid-list cols="9">
+      @for (gridbox of getGridboxes(); track gridbox.getValue(); let i = $index) {
+        <mat-grid-tile
+          [class]="{gridbox: true, gridbox_initial: gridbox.isValueInit() }"
+          (click)="onGridboxClick($event, i)"
+        >
+          <app-gridbox
+            [value]="gridbox.getValue()"
+            [valueInit]="gridbox.isValueInit()"
+            [clues]="gridbox.getClues()"
+          ></app-gridbox>
+        </mat-grid-tile>
+      }
+    </mat-grid-list>
+    <mat-list role="list" [style.visibility]="undefined !== _selectedGridboxId ? 'visible' : 'hidden'">
+      @for (item of [].constructor(9); track item; let i = $index) {
+        <mat-list-item role="listitem">
+          <button matFab
+            (click)="onValueLeftClick($event, i + 1)"
+            (contextmenu)="onValueRightClick($event, i + 1)"
+          >{{ i + 1 }}</button>
+        </mat-list-item>
+      }
+      <mat-list-item role="listitem">
+        <button matFab aria-label="Supprimer la valeur" (click)="onEraseClick($event)">
+          <mat-icon svgIcon="eraser" aria-hidden="false" aria-label="Supprimer"></mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  }
+</div>

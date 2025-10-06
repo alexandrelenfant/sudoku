@@ -1,0 +1,29 @@
+<form>
+  <label id="difficulty-group-label">Difficulté :</label>
+  <mat-radio-group
+    aria-labelledby="difficulty-group-label"
+    class="difficulty-group-group"
+    required
+    name="difficulty"
+    [(ngModel)]="_selectedDifficulty"
+  >
+    <mat-radio-button class="difficulty-radio-button" value="easy">Facile</mat-radio-button>
+    <mat-radio-button class="difficulty-radio-button" value="normal">Normal</mat-radio-button>
+    <mat-radio-button class="difficulty-radio-button" value="hard">Difficile</mat-radio-button>
+    <mat-radio-button class="difficulty-radio-button" value="random">Aléatoire</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field appearance="outline" id="game-number">
+    <mat-label>Numéro de partie (facultatif)</mat-label>
+    <input matInput type="number" name="gameNumber" [(ngModel)]="_selectedId">
+  </mat-form-field>
+  <div>
+    <button matButton="filled" (click)="onNewGrid()">Nouvelle partie</button>
+  </div>
+</form>
+@if (undefined !== (_gridRequestService.getCurrentGrid$() | async)) {
+  <hr>
+  <form>
+    <button matButton="filled" (click)="onReloadGrid()">Recharger la partie</button>
+    <button matButton="filled" (click)="onCheckGrid()">Vérifier la grille</button>
+  </form>
+}
